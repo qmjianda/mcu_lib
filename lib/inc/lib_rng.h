@@ -1,16 +1,14 @@
 #ifndef __LIB_RNG_H_
 #define __LIB_RNG_H_
 
-#include <stdio.h>
-#include <stdint.h>
-#include <stdbool.h>
+#include "include.h"
 
 typedef struct
 {
-	char *pBuf;		 /*指向ring缓冲区的指针*/
-	int  capaticy;   /*ring的大小*/
+	char *pBuf;		/*指向ring缓冲区的指针*/
+	int  capaticy;  /*ring的大小*/
 	int  fromBuf;    /*指向可取数据*/
-	int  toBuf;	 	 /*指向可存数据*/
+	int  toBuf;	 	/*指向可存数据*/
 }T_Ring;
 
 typedef int RING_ID;

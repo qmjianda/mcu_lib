@@ -1,5 +1,5 @@
 #include "lib_rng.h"
-
+#include "stdbool.h"
 
 /*
  *实际使用中使用xrngBufPut和xrngPut只能存储buflen-1个数据
@@ -7,7 +7,6 @@
  */
 RING_ID xrngInit(T_Ring *ring ,char *buffer, int bufLen)
 {
-
 	ring->pBuf  = buffer;
 	ring->capaticy = bufLen;
 	ring->fromBuf   = 0;
@@ -32,7 +31,6 @@ bool xrngGet(RING_ID ring, char* rcv)
 	if(_ring->fromBuf != _ring->toBuf) /*判断是否已经空了*/
 	{
 		*rcv = _ring->pBuf[_ring->fromBuf++];
-		
 		/*fromBuf = fromBuf%capaticy*/
 		if(_ring->fromBuf>=_ring->capaticy)
 		{
@@ -218,6 +216,7 @@ int xrngBufPut(RING_ID ring, char*buf, int len)
 	{
 		min = len;
 	}
+
     for(i=0; i<min; i++)
     {
         _ring->pBuf[_ring->toBuf++] = buf[i];
